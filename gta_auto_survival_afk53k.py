@@ -13,24 +13,22 @@ def d_click():                  #direct input for mouse
 
 def job():  # idle auto with direct input
     p.keyDown('w')
-    time.sleep(1)
+    time.sleep(0.5)
     p.keyUp('w')
     p.keyDown('s')
-    time.sleep(1)
+    time.sleep(0.5)
     p.keyUp('s')
-    p.keyDown('a')
-    time.sleep(1)
-    p.keyUp('a')
-    p.keyDown('d')
-    time.sleep(1)
-    p.keyUp('d')
+    time.sleep(5)
 
-def test():   # where i use to test my left click
-    d_click()
-    time.sleep(1)
-    d_click()
-    time.sleep(1)
-    d_click()
+def test():   # where i use to test my script
+    p.keyDown('w')
+    time.sleep(0.5)
+    p.keyUp('w')
+    p.keyDown('s')
+    time.sleep(0.5)
+    p.keyUp('s')
+    time.sleep(5)
+    
 
 def check():  # to check if the mission is complete and replay after complete
     play = py.locateCenterOnScreen("gta_pic/play.PNG",confidence = 0.9)
@@ -38,6 +36,8 @@ def check():  # to check if the mission is complete and replay after complete
     replay = py.locateCenterOnScreen("gta_pic/replay.PNG",confidence = 0.9)
     time.sleep(1)
     if play is not None:
+        x ,y = play
+        py.moveTo(x=x+300,y = y)
         py.moveTo(play)
         time.sleep(1)
         d_click()
@@ -45,16 +45,19 @@ def check():  # to check if the mission is complete and replay after complete
         
     
     if replay is not None:
+        x ,y = replay
+        py.moveTo(x=x-300,y = y)
         py.moveTo(replay)
         time.sleep(1)
         d_click()
+    job()
 
 
 # i am the main function===============================
 time.sleep(10)
 while 1:
     check()
-    job()
-    if k.is_pressed('2'):
+    
+    if k.is_pressed('*'):
         break
 
