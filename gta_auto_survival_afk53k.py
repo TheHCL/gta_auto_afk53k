@@ -53,7 +53,7 @@ def replaytab():
         flag = 2
         
 def play2tab():
-    play3 = py.locateCenterOnScreen("gta_pic/play3.PNG",confidence = 0.9,grayscale=True)
+    play3 = py.locateCenterOnScreen("gta_pic/play3.PNG",confidence = 0.8,grayscale=True)
     global flag
 
     if play3 is None:
